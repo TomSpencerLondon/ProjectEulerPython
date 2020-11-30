@@ -127,4 +127,27 @@ def helper(n):
     return largest_palindrome
 
 
-logging.debug(largest_palindrome(4))
+logging.debug("Problem 4. find the largest palindrome product of 2 4 digit numbers is %s", largest_palindrome(4))
+
+
+# Problem 5. Smallest multiple
+# 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder
+# What is the smallest positive number that is evenly divisible (divisible with no remainder) by all the numbers from
+# 1 to 20
+
+def smallest_multiple(number):
+    multiple = 1
+    for n in range(int(number // 2), number):
+        multiple = int(n * (multiple // greatest_common_divisor(n, multiple)))
+
+
+def greatest_common_divisor(first, second):
+    remainder = 0
+    while (first > 0):
+        remainder = first % second
+        first = second
+        second = remainder
+    return first
+
+
+print(smallest_multiple(20))
