@@ -61,7 +61,7 @@ logging.debug(
     "2. The sum of the even valued fibonacci numbers in the sequence whose value does not exceed four million is %s",
     even_fibonacci(4_000_000))
 
-
+# 3. What is the largest prime factor of 600851475143
 # Largest prime factor
 # The prime factors of 13195 are 5, 7, 13 and 29
 # What is the largest prime factor of the number 600851475143
@@ -135,19 +135,25 @@ logging.debug("Problem 4. find the largest palindrome product of 2 4 digit numbe
 # What is the smallest positive number that is evenly divisible (divisible with no remainder) by all the numbers from
 # 1 to 20
 
-def smallest_multiple(number):
-    multiple = 1
-    for n in range(int(number // 2), number):
-        multiple = int(n * (multiple // greatest_common_divisor(n, multiple)))
+# tell if number is divisible by 1 to 20
 
 
-def greatest_common_divisor(first, second):
-    remainder = 0
-    while (first > 0):
-        remainder = first % second
-        first = second
-        second = remainder
-    return first
+# starting at number 1, check if it's divisible by all numbers 1 to 20
+# increment number
 
+# found number stop
 
-print(smallest_multiple(20))
+def isDivisibleOneToTwenty(number):
+    for i in range(2, 21):
+        if number % i != 0:
+            return False
+    return True
+
+def checkNumbers():
+    number = 20
+    while True:
+        if isDivisibleOneToTwenty(number):
+            return number
+        number += 20
+
+logging.debug("Problem 5. Smallest multiple of that is divisible by all numbers from 1 - 20 is %s", checkNumbers())
